@@ -1,7 +1,6 @@
 package com.packages.java.testPackage;
 
 import com.packages.java.pages.*;
-import com.packages.pages.*;
 import com.packages.java.webdriverprovider.BaseClass;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;

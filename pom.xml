@@ -16,7 +16,12 @@
              junit.jupiter.execution.parallel.config.strategy = fixed
              junit.jupiter.execution.parallel.config.fixed.parallelism = 6 -->
          </configurationParameters>
+        <defaultSuiteFiles>
+            ./src/test/resources/TestNG1.xml,
+        </defaultSuiteFiles>
+        <suiteFile>${defaultSuiteFiles}</suiteFile>
      </properties>
+
 
      <dependencies>
          <dependency>
@@ -46,10 +51,21 @@
                        <groupId>org.apache.maven.plugins</groupId>
                        <artifactId>maven-surefire-plugin</artifactId>
                        <version>2.22.1</version>
+                        <executions>
+                            <execution>
+                                <phase>test</phase>
+                                <goals>
+                                    <goal>test</goal>
+                                </goals>
+                            </execution>
+                        </executions>
                        <configuration>
-                           <parallel>all</parallel>
+                           <suiteXmlFiles>
+                               <suiteXmlFile>${suiteFile}</suiteXmlFile>
+                           </suiteXmlFiles>
+                        <!--   <parallel>all</parallel>
                            <threadCount>5</threadCount>
-                           <redirectTestOutputToFile>false</redirectTestOutputToFile>
+                           <redirectTestOutputToFile>false</redirectTestOutputToFile> -->
                        </configuration>
                    </plugin>
                    <plugin>
@@ -59,6 +75,7 @@
                        <configuration>
                            <source>11</source>
                            <target>11</target>
+
                        </configuration>
                    </plugin>
                </plugins>
